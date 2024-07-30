@@ -169,6 +169,10 @@ body {
 /* Media queries */
 @media (max-width: 768px) {
   .main-container {
-    padding: 1rem;
+    padding: 0rem;
+  }
+
+  .section {
+    padding: 30px;
   }
 }

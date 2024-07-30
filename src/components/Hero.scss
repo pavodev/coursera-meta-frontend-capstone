@@ -53,3 +53,34 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    &__container {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      margin-bottom: 0;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      order: 1;
+    }
+
+    &__body {
+      text-align: center;
+    }
+
+    &__image {
+      margin-bottom: 20px;
+      order: 0;
+      position: initial;
+    }
+  }
+}

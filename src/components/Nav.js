@@ -1,74 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Nav.scss";
-import { NavLink } from "react-router-dom";
+import { Bars3Icon } from "@heroicons/react/16/solid";
+import Links from "./Links";
+import NavMenu from "./NavMenu";
 
 const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const onMenuOpen = () => {
+    setMenuOpen(true);
+  };
+
+  const onMenuClose = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className="navigation">
       <div className="navigation__container section">
         <img className="navigation__logo" src={"logo.svg"} alt="logo" />
-        <ul className="navigation__links">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/menu"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/reservations"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              Reservations
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/order-online"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              Order Online
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `navigation__link ${isActive ? "active" : ""}`
-              }
-            >
-              Login
-            </NavLink>
-          </li>
-        </ul>
+        <div className="navigation__trigger" onClick={onMenuOpen}>
+          <Bars3Icon />
+        </div>
+        <Links />
+        <NavMenu isOpen={menuOpen} onClose={onMenuClose} />
       </div>
     </nav>
   );

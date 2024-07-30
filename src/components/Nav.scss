@@ -1,6 +1,10 @@
 .navigation {
   background-color: white;
 
+  &__trigger {
+    display: none;
+  }
+
   &__container {
     grid-area: navigation;
     display: grid;
@@ -50,25 +54,36 @@
   }
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
   /* tablet, landscape iPad, lo-res laptops ands desktops */
   .navigation {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     align-items: center;
+
+    &__trigger {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-column: span 12;
+      padding: 10px;
+
+      svg {
+        width: 35px;
+      }
+    }
 
     &__logo {
       width: 300px;
       max-width: 100%;
       align-self: center;
       justify-self: center;
-      grid-column: span 1;
+      grid-column: span 12;
     }
 
     &__links {
-      flex-direction: column;
-      grid-column: span 1;
+      display: none;
     }
   }
 }
