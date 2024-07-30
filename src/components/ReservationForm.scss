@@ -1,0 +1,43 @@
+.reservation-form {
+  display: grid;
+  width: 400px;
+  max-width: 100%;
+  gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  label {
+    font-weight: 600;
+  }
+
+  input {
+    border: none;
+    background-color: var(--secondary-gray);
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      outline-color: var(--primary);
+    }
+
+    &[type="submit"] {
+      background-color: var(--primary);
+      color: white;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+      }
+    }
+  }
+
+  select {
+    border: none;
+    background-color: var(--secondary-gray);
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    border-right: 15px solid transparent;
+  }
+}
