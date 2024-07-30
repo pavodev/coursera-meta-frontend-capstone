@@ -1,5 +1,6 @@
 import React from "react";
 import "./Nav.scss";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -8,34 +9,64 @@ const Nav = () => {
         <img className="navigation__logo" src={"logo.svg"} alt="logo" />
         <ul className="navigation__links">
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               About
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/menu"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               Menu
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/reservations"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               Reservations
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/order-online"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               Order Online
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="navigation__link" href="#">
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `navigation__link ${isActive ? "active" : ""}`
+              }
+            >
               Login
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

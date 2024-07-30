@@ -31,10 +31,21 @@
     font-weight: 600;
     padding: 5px 10px;
     border-radius: 5px;
+    transition: background-color 0.2s;
 
     &:hover {
       background-color: var(--primary);
+      border-radius: 5px;
       color: white;
+    }
+
+    &.active {
+      background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+      color: white;
+
+      &:hover {
+        background-color: var(--primary);
+      }
     }
   }
 }
