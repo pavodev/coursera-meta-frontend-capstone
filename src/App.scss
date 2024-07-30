@@ -113,14 +113,15 @@ h6 {
   --primary: #495e57;
   --secondary: #f4ce14;
   --tertiary: #ee9972;
+  --secondary-gray: #edefee;
 
   --text-size-display-title: 40px;
   --text-size-sub-title: 25px;
   --text-size-lead-cta: 18px;
   --text-size-section-title: 20px;
   --text-size-categories: 16px;
-  --text-size-card-title: 18px;
-  --text-size-paragraph: 16px;
+  --text-size-card-title: 16px;
+  --text-size-paragraph: 12px;
   --text-size-highlight: 16px;
 }
 
@@ -151,7 +152,7 @@ body {
 }
 
 .section {
-  max-width: 1000px;
+  max-width: 800px;
   margin: auto;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -159,6 +160,10 @@ body {
 
 .footer {
   grid-area: footer;
+}
+
+.icon {
+  width: 20px;
 }
 
 /* Media queries */

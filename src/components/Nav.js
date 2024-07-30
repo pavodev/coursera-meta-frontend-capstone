@@ -4,7 +4,7 @@ import "./Nav.scss";
 const Nav = () => {
   return (
     <nav className="navigation">
-      <div className="navigation__container">
+      <div className="navigation__container section">
         <img className="navigation__logo" src={"logo.svg"} alt="logo" />
         <ul className="navigation__links">
           <li>

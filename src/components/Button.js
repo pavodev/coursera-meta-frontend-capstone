@@ -8,7 +8,7 @@ const Button = (props) => {
       href="#"
       onClick={props.onClick}
     >
-      Button
+      {props.children}
     </button>
   );
 };
