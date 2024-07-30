@@ -8,7 +8,7 @@ import GreekSalad from "../assets/img/greek-salad.jpg";
 import Bruschetta from "../assets/img/bruschetta.jpg";
 import LemonDessert from "../assets/img/lemon-dessert.jpg";
 
-const data = [
+const dishes = [
   {
     imageSrc: GreekSalad,
     title: "Greek Salad",
@@ -35,12 +35,13 @@ const Highlights = () => {
       <div className="highlights__container section">
         <ActionHeading title="This Weeks specials!" actionLabel="ONLINE MENU" />
         <div className="highlights__specials">
-          {data.map((item) => (
+          {dishes.map((dish) => (
             <Card
-              imageSrc={item.imageSrc}
-              title={item.title}
-              body={item.body}
-              price={item.price}
+              key={dish.title}
+              imageSrc={dish.imageSrc}
+              title={dish.title}
+              body={dish.body}
+              price={dish.price}
             />
           ))}
         </div>
