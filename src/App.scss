@@ -147,6 +147,20 @@ body {
   width: 100%;
 }
 
+.title {
+  &__primary {
+    color: var(--primary);
+    font-size: var(--text-size-display-title);
+    line-height: 0.8;
+  }
+
+  &__secondary {
+    color: var(--secondary);
+    font-size: var(--text-size-display-title);
+    line-height: 0.8;
+  }
+}
+
 .main {
   grid-area: main;
 }
