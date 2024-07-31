@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "./ReservationsForm";
 
 const mockedAvailableTimes = [
   "17:00",

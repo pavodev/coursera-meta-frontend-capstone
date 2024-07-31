@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-import "./ReservationForm.scss";
+import "./ReservationsForm.scss";
 
-const ReservationForm = (props) => {
+const ReservationsForm = (props) => {
   return (
     <>
       <h1 className="title__primary">Reserve a table</h1>
@@ -54,4 +54,4 @@ const ReservationForm = (props) => {
   );
 };
 
-export default ReservationForm;
+export default ReservationsForm;

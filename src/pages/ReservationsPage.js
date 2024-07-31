@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import ReservationForm from "../components/ReservationForm";
+import ReservationsForm from "../components/ReservationsForm";
 
 import "./ReservationsPage.scss";
 
@@ -53,7 +53,7 @@ const ReservationsPage = () => {
 
   return (
     <div className="reservations section">
-      <ReservationForm
+      <ReservationsForm
         date={date}
         onDateChange={onDateChange}
         time={time}
