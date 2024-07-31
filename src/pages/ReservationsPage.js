@@ -8,16 +8,16 @@ const updateTimes = (state, action) => {
   return state;
 };
 
-const ReservationsPage = () => {
-  const initialAvailableTimes = [
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ];
+const initializeAvailableTimes = () => [
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+  "21:00",
+  "22:00",
+];
 
+const ReservationsPage = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [nrGuests, setNrGuests] = useState(0);
@@ -25,7 +25,8 @@ const ReservationsPage = () => {
 
   const [availableTimes, dispatchAvailableTimes] = useReducer(
     updateTimes,
-    initialAvailableTimes
+    [],
+    initializeAvailableTimes
   );
 
   const onDateChange = (e) => {
@@ -52,7 +53,6 @@ const ReservationsPage = () => {
 
   return (
     <div className="reservations section">
-      <h1 className="title__primary">Reserve a table</h1>
       <ReservationForm
         date={date}
         onDateChange={onDateChange}
