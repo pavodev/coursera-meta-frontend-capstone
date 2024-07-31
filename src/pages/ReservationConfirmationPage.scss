@@ -1,0 +1,20 @@
+.confirmation {
+  h1 {
+    text-align: center;
+  }
+
+  &__recap {
+    padding-top: 40px;
+  }
+
+  &__label {
+    font-size: var(--text-size-lead-cta);
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  &__value {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+  }
+}

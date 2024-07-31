@@ -1,8 +1,9 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import ReservationsForm from "../components/ReservationsForm";
 
 import "./ReservationsPage.scss";
-import { fetchAPI } from "../mysc/api";
+import { fetchAPI, submitAPI } from "../mysc/api";
+import { useNavigate } from "react-router-dom";
 
 const initializeAvailableTimes = () => {
   const availableTimes = fetchAPI(new Date());
@@ -14,6 +15,7 @@ const ReservationsPage = () => {
   const [time, setTime] = useState("");
   const [nrGuests, setNrGuests] = useState(0);
   const [occasion, setOccasion] = useState("");
+  const navigate = useNavigate();
 
   const updateTimes = (state, action) => {
     console.log("state", state);
@@ -49,8 +51,27 @@ const ReservationsPage = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
+
+    if (submitAPI(e.target[0].value)) {
+      navigate("/reservation-confirmation", {
+        state: {
+          date,
+          time,
+          nrGuests,
+          occasion,
+        },
+      });
+      console.log("Form Submitted");
+    }
+
+    return false;
   };
+
+  useEffect(() => {
+    if (availableTimes && availableTimes.length > 0) {
+      setTime(availableTimes[0]);
+    }
+  }, [availableTimes]);
 
   return (
     <div className="reservations section">

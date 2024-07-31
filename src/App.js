@@ -9,6 +9,7 @@ import MenuPage from "./pages/MenuPage";
 import ReservationsPage from "./pages/ReservationsPage";
 import OrderOnlinePage from "./pages/OrderOnlinePage";
 import LoginPage from "./pages/LoginPage";
+import ReservationConfirmationPage from "./pages/ReservationConfirmationPage";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/menu" element={<MenuPage />}></Route>
         <Route path="/reservations" element={<ReservationsPage />}></Route>
+        <Route
+          path="/reservation-confirmation"
+          element={<ReservationConfirmationPage />}
+        ></Route>
         <Route path="/order-online" element={<OrderOnlinePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
       </Routes>

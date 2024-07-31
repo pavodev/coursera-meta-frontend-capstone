@@ -10,8 +10,6 @@ const seededRandom = function (seed) {
 export const fetchAPI = function (date) {
   date = new Date(date);
 
-  console.log("date", date);
-
   let result = [];
   let random = seededRandom(date.getDate());
 
@@ -24,7 +22,6 @@ export const fetchAPI = function (date) {
     }
   }
 
-  console.log("result", result);
   return result;
 };
 
