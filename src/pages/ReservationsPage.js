@@ -2,26 +2,27 @@ import React, { useReducer, useState } from "react";
 import ReservationsForm from "../components/ReservationsForm";
 
 import "./ReservationsPage.scss";
+import { fetchAPI } from "../mysc/api";
 
-const updateTimes = (state, action) => {
-  console.log(action);
-  return state;
+const initializeAvailableTimes = () => {
+  const availableTimes = fetchAPI(new Date());
+  return availableTimes;
 };
 
-const initializeAvailableTimes = () => [
-  "17:00",
-  "18:00",
-  "19:00",
-  "20:00",
-  "21:00",
-  "22:00",
-];
-
 const ReservationsPage = () => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const [time, setTime] = useState("");
   const [nrGuests, setNrGuests] = useState(0);
   const [occasion, setOccasion] = useState("");
+
+  const updateTimes = (state, action) => {
+    console.log("state", state);
+    if (action.type === "date-changed") {
+      state.availableTimes = fetchAPI(date);
+    }
+
+    return state;
+  };
 
   const [availableTimes, dispatchAvailableTimes] = useReducer(
     updateTimes,
