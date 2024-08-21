@@ -6,6 +6,10 @@
   margin-top: 40px;
   margin-bottom: 40px;
 
+  &__error {
+    color: red;
+  }
+
   label {
     font-weight: 600;
   }

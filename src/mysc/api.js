@@ -12,6 +12,7 @@ export const fetchAPI = function (date) {
 
   let result = [];
   let random = seededRandom(date.getDate());
+  console.log("random", random());
 
   for (let i = 17; i <= 23; i++) {
     if (random() < 0.5) {
@@ -22,6 +23,7 @@ export const fetchAPI = function (date) {
     }
   }
 
+  console.log("NEW TIMES", result);
   return result;
 };
 

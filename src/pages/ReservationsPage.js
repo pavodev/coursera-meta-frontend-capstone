@@ -12,15 +12,12 @@ const initializeAvailableTimes = () => {
 
 const ReservationsPage = () => {
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-  const [time, setTime] = useState("");
-  const [nrGuests, setNrGuests] = useState(0);
-  const [occasion, setOccasion] = useState("");
   const navigate = useNavigate();
 
   const updateTimes = (state, action) => {
     console.log("state", state);
     if (action.type === "date-changed") {
-      state.availableTimes = fetchAPI(date);
+      state = fetchAPI(date);
     }
 
     return state;
@@ -33,33 +30,16 @@ const ReservationsPage = () => {
   );
 
   const onDateChange = (e) => {
-    dispatchAvailableTimes({ type: "date-changed" });
     setDate(e.target.value);
+    dispatchAvailableTimes({ type: "date-changed" });
   };
 
-  const onTimeChange = (e) => {
-    setTime(e.target.value);
-  };
+  const onFormSubmit = (data) => {
+    console.log(data);
 
-  const onNrGuestsChange = (e) => {
-    setNrGuests(e.target.value);
-  };
-
-  const onOccasionChange = (e) => {
-    setOccasion(e.target.value);
-  };
-
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-
-    if (submitAPI(e.target[0].value)) {
+    if (submitAPI(data)) {
       navigate("/reservation-confirmation", {
-        state: {
-          date,
-          time,
-          nrGuests,
-          occasion,
-        },
+        state: data,
       });
       console.log("Form Submitted");
     }
@@ -67,24 +47,11 @@ const ReservationsPage = () => {
     return false;
   };
 
-  useEffect(() => {
-    if (availableTimes && availableTimes.length > 0) {
-      setTime(availableTimes[0]);
-    }
-  }, [availableTimes]);
-
   return (
     <div className="reservations section">
       <ReservationsForm
-        date={date}
-        onDateChange={onDateChange}
-        time={time}
-        onTimeChange={onTimeChange}
-        nrGuests={nrGuests}
-        onNrGuestsChange={onNrGuestsChange}
-        occasion={occasion}
-        onOccasionChange={onOccasionChange}
         availableTimes={availableTimes}
+        onDateChange={onDateChange}
         onSubmit={onFormSubmit}
       />
     </div>
