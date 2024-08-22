@@ -52,9 +52,12 @@ const ReservationsForm = (props) => {
             name="date"
             {...formik.getFieldProps("date")}
             onChange={props.onDateChange}
+            data-testid="date"
           />
           {formik.touched.date && formik.errors.date ? (
-            <div className="reservation-form__error">{formik.errors.date}</div>
+            <div className="reservation-form__error" data-testid="date-error">
+              {formik.errors.date}
+            </div>
           ) : null}
           <label htmlFor="res-time">Choose time</label>
           <select
@@ -63,14 +66,16 @@ const ReservationsForm = (props) => {
             value={formik.values.time}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            data-testid="time-select"
+            data-testid="time"
           >
             {props.availableTimes?.map((availableTime) => (
               <option key={availableTime}>{availableTime}</option>
             ))}
           </select>
           {formik.touched.time && formik.errors.time ? (
-            <div className="reservation-form__error">{formik.errors.time}</div>
+            <div className="reservation-form__error" data-testid="time-error">
+              {formik.errors.time}
+            </div>
           ) : null}
           <label htmlFor="guests">Number of guests</label>
           <input
@@ -83,9 +88,13 @@ const ReservationsForm = (props) => {
             value={formik.values.nrGuests}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
+            data-testid="nrGuests"
           />
           {formik.touched.nrGuests && formik.errors.nrGuests ? (
-            <div className="reservation-form__error">
+            <div
+              className="reservation-form__error"
+              data-testid="nrGuests-error"
+            >
               {formik.errors.nrGuests}
             </div>
           ) : null}
@@ -96,12 +105,16 @@ const ReservationsForm = (props) => {
             value={formik.values.occasion}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
+            data-testid="occasion"
           >
             <option>Birthday</option>
             <option>Anniversary</option>
           </select>
           {formik.touched.occasion && formik.errors.occasion ? (
-            <div className="reservation-form__error">
+            <div
+              className="reservation-form__error"
+              data-testid="occasion-error"
+            >
               {formik.errors.occasion}
             </div>
           ) : null}
