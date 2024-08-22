@@ -15,7 +15,7 @@ const ReservationsForm = (props) => {
       date: getCurrentDate(),
       time: props.availableTimes?.length ? props.availableTimes[0] : "",
       nrGuests: 1,
-      occasion: "",
+      occasion: "Birthday",
     },
     validateOnChange: (data) => {
       console.log("CHANGED", data);
@@ -34,7 +34,7 @@ const ReservationsForm = (props) => {
         .max(10, "There must be maximum 10 guests"),
       occasion: Yup.string()
         .required()
-        .default("")
+        .default("Birthday")
         .oneOf(["Birthday", "Anniversary"]),
     }),
     onSubmit: props.onSubmit,
@@ -77,7 +77,7 @@ const ReservationsForm = (props) => {
               {formik.errors.time}
             </div>
           ) : null}
-          <label htmlFor="guests">Number of guests</label>
+          <label htmlFor="nrGuests">Number of guests</label>
           <input
             type="number"
             placeholder="1"
@@ -102,10 +102,10 @@ const ReservationsForm = (props) => {
           <select
             id="occasion"
             name="occasion"
-            value={formik.values.occasion}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             data-testid="occasion"
+            defaultValue={"Birthday"}
           >
             <option>Birthday</option>
             <option>Anniversary</option>
@@ -118,7 +118,7 @@ const ReservationsForm = (props) => {
               {formik.errors.occasion}
             </div>
           ) : null}
-          <button className="button" type="submit">
+          <button className="button" type="submit" aria-label="Submit">
             Make your reservation
           </button>
         </Form>

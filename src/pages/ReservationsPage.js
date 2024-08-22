@@ -4,6 +4,7 @@ import ReservationsForm from "../components/ReservationsForm";
 import "./ReservationsPage.scss";
 import { fetchAPI, submitAPI } from "../mysc/api";
 import { useNavigate } from "react-router-dom";
+import ReservationModal from "../components/ReservationModal";
 
 const initializeAvailableTimes = () => {
   const availableTimes = fetchAPI(new Date());
@@ -11,6 +12,8 @@ const initializeAvailableTimes = () => {
 };
 
 const ReservationsPage = () => {
+  const [show, setShow] = useState(false);
+  const [formData, setFormData] = useState({});
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const navigate = useNavigate();
 
@@ -34,14 +37,31 @@ const ReservationsPage = () => {
     dispatchAvailableTimes({ type: "date-changed" });
   };
 
-  const onFormSubmit = (data) => {
-    console.log(data);
+  const onModalClose = () => {
+    setShow(false);
+  };
 
+  const onModalSubmit = () => {
+    setShow(false);
+
+    if (submitAPI(formData)) {
+      console.log("Form Submitted");
+
+      navigate("/reservation-confirmation", {
+        state: formData,
+      });
+    }
+
+    return false;
+  };
+
+  const onFormSubmit = (data) => {
     if (submitAPI(data)) {
+      console.log("Form Submitted");
+
       navigate("/reservation-confirmation", {
         state: data,
       });
-      console.log("Form Submitted");
     }
 
     return false;
@@ -49,6 +69,11 @@ const ReservationsPage = () => {
 
   return (
     <div className="reservations section">
+      {/* <ReservationModal
+        show={show}
+        onClose={onModalClose}
+        onSubmit={onModalSubmit}
+      /> */}
       <ReservationsForm
         availableTimes={availableTimes}
         onDateChange={onDateChange}
